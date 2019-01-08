@@ -35,19 +35,29 @@ namespace Outside.Tdd._1FizzBuzz
             var result = FizzBuzzDetector.IdentifyFizzBuzz(number);
             result.ShouldBe("Buzz");
         }
+
+        [Theory]
+        [InlineData(15)]
+        [InlineData(45)]
+        [InlineData(90)]
+        public void PrintFizzBuzzForMultiplesOfThreeAndFive(int number)
+        {
+            var result = FizzBuzzDetector.IdentifyFizzBuzz(number);
+            result.ShouldBe("FizzBuzz");
+        }
     }
 
     public class FizzBuzzDetector
     {
         public static string IdentifyFizzBuzz(int i)
         {
+            if (i % 15 == 0)
+                return "FizzBuzz";
+
             if (i % 5 == 0)
                 return "Buzz";
 
-            if (i % 3 == 0)
-                return "Fizz";
-
-            return i.ToString();
+            return i % 3 == 0 ? "Fizz" : i.ToString();
         }
     }
 }
