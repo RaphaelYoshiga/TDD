@@ -6,32 +6,35 @@ namespace Outside.Tdd._1FizzBuzz
 {
     public class FizzBuzzDetectorShould
     {
-        [Fact]
-        public void PrintOne()
+        [Theory]
+        [InlineData(1, "1")]
+        [InlineData(2, "2")]
+        [InlineData(4, "4")]
+        public void PrintNumbers(int number, string expectedResult)
         {
-            var result = FizzBuzzDetector.IdentifyFizzBuzz(1);
-            result.ShouldBe("1");
+            var result = FizzBuzzDetector.IdentifyFizzBuzz(number);
+            result.ShouldBe(expectedResult);
         }
 
-        [Fact]
-        public void PrintTwo()
+        [Theory]
+        [InlineData(3)]
+        [InlineData(6)]
+        [InlineData(9)]
+        public void PrintFizzForMultiplesOfThree(int number)
         {
-            var result = FizzBuzzDetector.IdentifyFizzBuzz(2);
-            result.ShouldBe("2");
+            var result = FizzBuzzDetector.IdentifyFizzBuzz(number);
+            result.ShouldBe("Fizz");
         }
 
-        [Fact]
-        public void PrintFour()
-        {
-            var result = FizzBuzzDetector.IdentifyFizzBuzz(4);
-            result.ShouldBe("4");
-        }
     }
 
     public class FizzBuzzDetector
     {
         public static string IdentifyFizzBuzz(int i)
         {
+            if (i % 3 == 0)
+                return "Fizz";
+
             return i.ToString();
         }
     }
