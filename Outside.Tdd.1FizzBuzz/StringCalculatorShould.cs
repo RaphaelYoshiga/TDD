@@ -48,7 +48,7 @@ namespace Outside.Tdd._1FizzBuzz
             if (input == string.Empty)
                 return 0;
 
-            var splittedInput = input.Split(';');
+            var splittedInput = input.Split(',');
             if (splittedInput.Length == 1)
                 return int.Parse(input);
 
