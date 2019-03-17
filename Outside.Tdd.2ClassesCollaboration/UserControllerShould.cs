@@ -36,6 +36,8 @@ namespace Outside.Tdd._2ClassesCollaboration
             var result = (OkObjectResult)_usersController.GetUserBy(id);
 
             result.Value.ShouldBe(userResponse);
+
+            _userRepositoryMock.Verify(p => p.GetBy(id));
         }
 
         [Fact]
